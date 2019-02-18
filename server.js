@@ -8,10 +8,10 @@ const bodyParser = require('body-parser');
 
 // we import the ShoppingList model, which we'll
 // interact with in our GET endpoint
-const {ShoppingList} = require('./models');
+const {ShoppingList, Recipes} = require('./models');
 
 //RECIPE
-const {Recipes} = require('./models');
+// const {Recipes} = require('./models');
 
 
 const jsonParser = bodyParser.json();
@@ -31,6 +31,7 @@ ShoppingList.create('peppers', 4);
 
 //RECIPE
 Recipes.create('pizza', ['pepperoni','cheese','sauce']);
+Recipes.create('latte',['espresso','milk','steamed milk']);
 
 
 // when the root of this route is called with GET, return
@@ -40,7 +41,7 @@ app.get('/shopping-list', (req, res) => {
 });
 
 //RECIPE
-app.get('/recipes', (req,res) => {
+app.get('/recipes', (req, res) => {
   res.json(Recipes.get());
 });
 
